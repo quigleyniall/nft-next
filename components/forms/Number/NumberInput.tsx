@@ -1,0 +1,37 @@
+import { FilledInput, TextField, TextFieldVariants } from "@mui/material";
+import styles from "./TextInput.module.scss";
+
+interface Props {
+  label: string;
+  name: string;
+  variant?: TextFieldVariants | undefined;
+  value: string;
+  onChange: (e) => void;
+}
+
+const NumberInput = ({
+  label,
+  variant = "outlined",
+  onChange,
+  name,
+  value,
+}: Props) => {
+  return (
+    <TextField
+      label={label}
+      value={value}
+    //   InputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
+    inputProps={{
+        step: 1,
+        min: 0,
+        max: 99999,
+        type: 'number',
+      }}
+      name={name}
+      variant={variant}
+      onChange={onChange}
+    />
+  );
+};
+
+export default NumberInput;

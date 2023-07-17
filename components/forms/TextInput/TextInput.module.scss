@@ -1,0 +1,47 @@
+// $input-background: white !important;
+// $label-color: #bbb;
+
+// .filledInput {
+//     width: 100%;
+//     background-color: $input-background;
+//     border: 1px solid #bbb;
+//     border-radius: 4px;
+
+//     label {
+//         color: $label-color;
+//     }
+
+//     input {
+//         padding-bottom: 3px;
+//         transition: unset;
+//     }
+
+//     &:before, &:after {
+//         border-bottom: none !important;
+//     }
+    
+
+//     &:hover {
+//         background-color: $input-background;
+//         border: 1px solid #1976d2;
+//     }
+
+//     input:-webkit-autofill,
+//     input:-webkit-autofill:hover, 
+//     input:-webkit-autofill:focus, 
+//     input:-webkit-autofill:active {
+//         -webkit-box-shadow: 0 0 0 30px white inset !important;
+//     }
+// }
+
+// .focused {
+//     border: 1px solid #1976d2;
+//     width: 100%;
+//     background-color: $input-background;
+//     border-radius: 4px;
+// }
+
+// .textInput {
+//     display: flex;
+//     flex: 1;
+// }
