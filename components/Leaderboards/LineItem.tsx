@@ -26,15 +26,15 @@ const StyledAvatarContainer = styled(Grid)(
   );
   
 
-const LineItem = () => {
+const LineItem = ({name, amount}) => {
   return (
     <StyledLineItem item xs={9}>
       <StyledAvatarContainer>
         <ImageAvatar />
-        <Typography variant="h6" component="p">Niall Quigley</Typography>
+        <Typography variant="h6" component="p">{name}</Typography>
       </StyledAvatarContainer>
 
-      <Typography variant="h6" component="p">365</Typography>
+      <Typography variant="h6" component="p">{amount}</Typography>
     </StyledLineItem>
   );
 };

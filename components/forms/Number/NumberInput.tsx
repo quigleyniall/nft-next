@@ -1,5 +1,5 @@
-import { FilledInput, TextField, TextFieldVariants } from "@mui/material";
-import styles from "./TextInput.module.scss";
+import { TextField, TextFieldVariants } from "@mui/material";
+
 
 interface Props {
   label: string;
@@ -15,9 +15,12 @@ const NumberInput = ({
   onChange,
   name,
   value,
+  ...rest
 }: Props) => {
   return (
     <TextField
+    {...rest}
+    
       label={label}
       value={value}
     //   InputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}

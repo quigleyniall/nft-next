@@ -1,11 +1,14 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
-const Dropdown = () => {
+interface Props {
+  label: string;
+  options: [{label: string, value: string | number}]
+}
+
+const Dropdown = ({label, options} : Props) => {
   const [age, setAge] = React.useState('');
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -13,17 +16,16 @@ const Dropdown = () => {
   };
 
   return (
-    
       <>
-        <InputLabel>Type</InputLabel>
+        <InputLabel>{label}</InputLabel>
         <Select
           value={age}
-          label="Type"
+          label={label}
           onChange={handleChange}
         >
-          <MenuItem value={10}>Event</MenuItem>
-          <MenuItem value={20}>Money</MenuItem>
-          <MenuItem value={30}>Gift</MenuItem>
+          {options.map(({label, value}) => (
+            <MenuItem key={value} value={value}>{label}</MenuItem>
+          ))}
         </Select>
         </>
   );

@@ -10,6 +10,7 @@ import {
   Paper,
   Card,
   Grid,
+  FormControlLabel,
 } from "@mui/material";
 import { H1 } from "../../../components/typography/typography";
 import TextArea from "../../../components/forms/TextArea/TextArea";
@@ -21,6 +22,7 @@ import NumberInput from "../../../components/forms/Number/NumberInput";
 import TimeLine from "../../../components/TimeLine/TimeLine";
 import Switch from "../../../components/forms/Switch/Switch";
 import Dashboard from "@/components/Dashboard/Dashboard";
+import DateInput from "@/components/forms/Date/DateInput";
 
 interface Modal {
   success?: boolean;
@@ -62,10 +64,10 @@ const StoreAsset = () => {
   const [modalDetails, setModalDetails] = useState<Modal>();
   const [ipfs, setIpfs] = useState("");
   const [buttonText, setButtonText] = useState("Save IPFS");
-
-
-
- 
+  const [showPointsInput, setShowPointsInput] = useState(false);
+  const [showTimeInput, setShowTimeInput] = useState(false);
+  const [points, setPoints] = useState(0);
+  const [date, setDate] = useState(null)
 
   return (
     <Dashboard>
@@ -75,7 +77,6 @@ const StoreAsset = () => {
             <Button
               sx={{ marginTop: "8px" }}
               variant="contained"
-              // onClick={saveUri}
               disabled={buttonText == "Saved"}
             >
               {buttonText}
@@ -83,7 +84,6 @@ const StoreAsset = () => {
           )}
         </SendingRequest>
       )}
-
       <Grid
         container
         rowSpacing={3}
@@ -97,7 +97,6 @@ const StoreAsset = () => {
           <Card sx={{ padding: "1.25rem", position: "relative" }}>
             {/* <TimeLine /> */}
             <Typography variant="h5">Create a Reward</Typography>
-
             <form>
               <Grid container>
                 <Grid item xs={4}>
@@ -114,7 +113,7 @@ const StoreAsset = () => {
                   </FormControl>
                   <FormControl sx={{ mb: 3, width: "100%" }}>
                     <TextArea
-                    label="description"
+                      label="description"
                       name="description"
                       placeholder="Description"
                       onChange={(e) => setDesc(e.target.value)}
@@ -122,7 +121,14 @@ const StoreAsset = () => {
                   </FormControl>
                   <Box sx={{ display: "flex", gap: "16px" }}>
                     <FormControl sx={{ mb: 3, flex: 1 }}>
-                      <Dropdown />
+                      <Dropdown
+                        label="Type"
+                        options={[
+                          { label: "Money", value: 30 },
+                          { label: "Gift", value: 20 },
+                          { label: "Event", value: 10 },
+                        ]}
+                      />
                     </FormControl>
                     <FormControl sx={{ mb: 0, flex: 1 }}>
                       <NumberInput
@@ -133,13 +139,76 @@ const StoreAsset = () => {
                       />
                     </FormControl>
                   </Box>
-                  </Grid>
-                  <Grid item xs={4}>
+                </Grid>
+                <Grid item xs={4}>
                   <Typography variant="body1">Requirements</Typography>
+                </Grid>
+                <Grid container xs={8}>
+                  <Grid item xs={6}>
+                    <FormControlLabel
+                      sx={{ mb: 3, width: "100%" }}
+                      value="points"
+                      control={
+                        <Switch
+                          label="Points Based"
+                          onChange={() => setShowPointsInput(!showPointsInput)}
+                        />
+                      }
+                      label="Points Based"
+                      labelPlacement="end"
+                    />
                   </Grid>
-                  <Grid item xs={8}>
-                    <Switch label="test" />
-                  Points based, time based, expiry, gallery, specific individual
+                  <Grid item xs={6}>
+                    <FormControlLabel
+                      sx={{ mb: 3, width: "100%" }}
+                      value="time"
+                      control={
+                        <Switch label="Points Based" onChange={() => setShowTimeInput(!showTimeInput)} />
+                      }
+                      label="Time Based"
+                      labelPlacement="end"
+                    />
+                  </Grid>
+
+                  <Grid item xs={12}>
+                    {showPointsInput && (
+                      <FormControl sx={{ mb: 3, width: "100%" }}>
+                        <NumberInput
+                          name="points"
+                          onChange={(e) => setPoints(e.target.value)}
+                          label="Points Required"
+                          value={points}
+                        />
+                      </FormControl>
+                    )}
+                  </Grid>
+                  <Grid item xs={12}>
+                    {showTimeInput && (
+                      <FormControl sx={{ mb: 3, width: "100%" }}>
+                        <DateInput value={date} onChange={(newValue) => setDate(newValue)} />
+                      </FormControl>
+                    )}
+                  </Grid>
+
+                  <Grid item xs={12}>
+                    <FormControl sx={{ mb: 3, width: "100%" }}>
+                      <Dropdown
+                        label="User"
+                        options={[
+                          { label: "Jeff", value: "Jeff" },
+                          { label: "Noel", value: "Noel" },
+                          { label: "Graham", value: "Graham" },
+                        ]}
+                      />
+                    </FormControl>
+                  </Grid>
+
+                  <Grid item xs={12}>
+                    <FormControl sx={{ mb: 3, width: "100%" }}>
+                      <ImageInput />
+                    </FormControl>
+                  </Grid>
+
                   <Button
                     disabled={!name || !desc || !image}
                     size="large"
@@ -149,7 +218,7 @@ const StoreAsset = () => {
                   >
                     Submit
                   </Button>
-                  </Grid>
+                </Grid>
               </Grid>
             </form>
           </Card>
