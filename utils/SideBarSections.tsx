@@ -9,8 +9,8 @@ export const sections = {
     ],
     Rewards: [
       { title: "Create a reward", icon: "ShoppingBag", href: '/reward/create' },
-      { title: "Make A Suggestion?", icon: "ShoppingBag" },
-      { title: "Polls", icon: "ShoppingBag" },
+      { title: "Make A Suggestion?", icon: "ShoppingBag", href: '/reward/suggestion' },
+      { title: "Polls", icon: "ShoppingBag", href: '/reward/polls' },
       { title: "Rewards on offer", icon: "ShoppingCart" },
     ],
     Recognition: [
