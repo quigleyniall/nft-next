@@ -14,6 +14,9 @@ const Leaderboards = () => {
         <Paper sx={{ padding: "16px", marginBottom: "24px" }}>
           <BarChart color="#11B981" />
         </Paper>
+        <Paper sx={{ padding: "16px", marginBottom: "24px" }}>
+          <BarChart color="#11B981" />
+        </Paper>
       </Grid>
     </Dashboard>
   );
