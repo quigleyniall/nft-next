@@ -10,7 +10,7 @@ const BarChart = () => {
   const {theme} = useContext(CustomTheme);
   const [options, setOptions] = useState<ChartOptions>({options: {}, series: []})
 
-    const chartOptions = (color) => ({
+    const chartOptions = (color = "#11B981") => ({
       options: {
           chart: {
               height: '30px',
@@ -24,7 +24,7 @@ const BarChart = () => {
                 horizontal: true,
                 barHeight: '20px',
                 colors: {
-                  backgroundBarColors: ['#40475D']
+                  backgroundBarColors: ['#bbb']
                 }
               },
             },
@@ -36,7 +36,7 @@ const BarChart = () => {
               
               offsetX: -10,
               offsetY: 5,
-              text: 'Process 1',
+              text: 'Progress',
               style: {
                 color
               }
@@ -61,7 +61,7 @@ const BarChart = () => {
               max: 100
             },
             fill: {
-              opacity: 1
+              opacity: 1,
             }
         },
         

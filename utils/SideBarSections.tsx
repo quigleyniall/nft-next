@@ -5,13 +5,13 @@ export const sections = {
       { title: "My Metrics", icon: "PieChart", href: '/metrics' },
       { title: "Leaderboards", icon: "LocalShipping", href: '/leaderboards'},
       { title: "Badges", icon: "AccountCircle", href: '/badges'},
-      { title: "Goals", icon: "AccountCircle" },
+      { title: "Goals", icon: "AccountCircle", href: '/goals' },
     ],
     Rewards: [
       { title: "Create a reward", icon: "ShoppingBag", href: '/reward/create' },
       { title: "Make A Suggestion?", icon: "ShoppingBag", href: '/reward/suggestion' },
       { title: "Polls", icon: "ShoppingBag", href: '/reward/polls' },
-      { title: "Rewards on offer", icon: "ShoppingCart" },
+      { title: "Rewards on offer", icon: "ShoppingCart", href: '/reward/current' },
     ],
     Recognition: [
       { title: "Recognition", icon: "Share" },
