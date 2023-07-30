@@ -14,7 +14,6 @@ const BarChart = ({startText = '', endText = '', value = 0, max = 100, minThresh
   const [options, setOptions] = useState<ChartOptions>({options: {}, series: []})
 
   const barColor = () => {
-    console.log(value > maxThreshold);
     switch (true) {
       case value > maxThreshold:
         return GREEN;

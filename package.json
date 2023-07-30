@@ -24,6 +24,8 @@
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.10",
     "jsforce": "^1.11.1",
+    "mongodb": "^5.7.0",
+    "mongoose": "^7.4.1",
     "next": "13.4.10",
     "next-auth": "^4.22.1",
     "nft.storage": "^7.1.0",

@@ -7,7 +7,7 @@ const Sold = ({ title = "Conversions" }) => {
     <AnnouncementWrapper title={title}>
       <Typography variant="body1">This week you sold:</Typography>
       <Typography variant="h5">$12k</Typography>
-      <Button variant="contained">View Breakdown</Button>
+      <Button component="a" href="/goals" variant="contained">View Breakdown</Button>
       <Box
         sx={{
           right: "16px",

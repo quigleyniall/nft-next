@@ -16,14 +16,14 @@ export const sections = {
     Recognition: [
       { title: "Recognition", icon: "Share" },
     ],
-    Social: [
-      { title: "Social Media", icon: "Share" },
-      { title: "Blog", icon: "Feed" },
-      { title: "Chat", icon: "Chat" },
-    ],
-    Marketplace: [
-      { title: "Market Place", icon: "ShoppingCart" }
-    ],
+    // Social: [
+    //   { title: "Social Media", icon: "Share" },
+    //   { title: "Blog", icon: "Feed" },
+    //   { title: "Chat", icon: "Chat" },
+    // ],
+    // Marketplace: [
+    //   { title: "Market Place", icon: "ShoppingCart" }
+    // ],
     Events: [
       { title: "Upcoming Events", icon: "AccountCircle" },
       { title: "Calender", icon: "DateRange" },
