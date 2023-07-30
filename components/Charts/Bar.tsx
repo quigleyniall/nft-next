@@ -5,15 +5,32 @@ import { ChartOptions } from '@/types/chartOptions';
 
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
+const RED = '#E15140';
+const GREEN = '#11B981';
+const YELLOW = '#FFEB3A'
 
-const BarChart = () => {
+const BarChart = ({startText = '', endText = '', value = 0, max = 100, minThreshold = 0, maxThreshold = 0}) => {
   const {theme} = useContext(CustomTheme);
   const [options, setOptions] = useState<ChartOptions>({options: {}, series: []})
+
+  const barColor = () => {
+    console.log(value > maxThreshold);
+    switch (true) {
+      case value > maxThreshold:
+        return GREEN;
+      case value > minThreshold && value < maxThreshold:
+        return RED
+      case value < minThreshold:
+        return RED;
+      default:
+        return GREEN;
+    }
+  }
 
     const chartOptions = (color = "#11B981") => ({
       options: {
           chart: {
-              height: '30px',
+              // height: '',
               type: 'bar',
               sparkline: {
                 enabled: true
@@ -22,7 +39,7 @@ const BarChart = () => {
             plotOptions: {
               bar: {
                 horizontal: true,
-                barHeight: '20px',
+                barHeight: '30px',
                 colors: {
                   backgroundBarColors: ['#bbb'],
                   
@@ -34,11 +51,12 @@ const BarChart = () => {
             },
             title: {
               floating: true,
-              
               offsetX: -10,
-              offsetY: 5,
-              text: 'Progress',
+              offsetY: 0,
+              text: startText,
               style: {
+                fontSize: '16px',
+                fontWeight: '400',
                 color
               }
             },
@@ -46,31 +64,38 @@ const BarChart = () => {
               floating: true,
               align: 'right',
               offsetY: 0,
-              text: '44%',
+              text: endText,
               style: {
-                fontSize: '20px',
+                fontSize: '16px',
                 color
+              }
+            },
+            dataLabels: {
+              enabled: true,
+              style: {
+                fontSize: '16px',
+                fontWeight: '400'
               }
             },
             tooltip: {
               enabled: false
             },
             xaxis: {
-              categories: ['Process 1'],
+              categories: ['Progress 1'],
             },
             yaxis: {
-              max: 100
+              max
             },
             fill: {
               opacity: 1,
-              colors: ['#11B981']
+              colors: [barColor()]
               
             }
         },
         
         series: [{
           name: 'Process 1',
-          data: [44]
+          data: [value]
         }],
   })
 

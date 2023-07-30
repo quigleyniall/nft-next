@@ -1,6 +1,5 @@
 import {
   Card,
-  FormControl,
   Button,
   Grid,
   Typography,
@@ -11,6 +10,7 @@ import {
 import Dashboard from "@/components/Dashboard/Dashboard";
 import { useState } from "react";
 import { H1, H4 } from "@/components/typography/typography";
+import Reward from "@/components/Rewards";
 
 const Suggestion = () => {
   const [idea, setIdea] = useState("");
@@ -31,26 +31,10 @@ const Suggestion = () => {
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
         sx={{ padding: "32px", background: "#F4F5FA" }}
       >
-        {offers.map(({ title, desc, button }, index) => (
+        {offers.map((offer, index) => (
           <Grid key={index} item xs={4}>
-            <Card sx={{ maxWidth: 345 }}>
-              <CardMedia
-                sx={{ height: 140 }}
-                //   image="/static/images/cards/contemplative-reptile.jpg"
-                // title={}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  {title}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {desc}
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <Button size="small">{button}</Button>
-              </CardActions>
-            </Card>
+            <Reward {...offer} />
+             
           </Grid>
         ))}
       </Grid>
