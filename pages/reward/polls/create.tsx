@@ -4,7 +4,7 @@ import TextArea from "@/components/forms/TextArea/TextArea";
 import { useState } from "react";
 import { H1, H4 } from "@/components/typography/typography";
 
-const Poll = () => {
+const PollCreate = () => {
     const [idea, setIdea] = useState('')
   return (
     <Dashboard>
@@ -32,4 +32,4 @@ const Poll = () => {
   );
 };
 
-export default Poll;
+export default PollCreate

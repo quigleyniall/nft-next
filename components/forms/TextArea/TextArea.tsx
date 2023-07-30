@@ -9,13 +9,14 @@ interface Props {
     onChange: (e) => void;
 }
 
-const TextArea = ({ minRows = 3, name, placeholder, onChange}: Props) => {
+const TextArea = ({ minRows = 3, name, placeholder = 'Description', onChange, value = ''}: Props) => {
   return  <TextField
-  label="Description"
+  label={placeholder}
   multiline
   name={name}
   rows={minRows}
   onChange={onChange}
+  value={value}
 />
 };
 

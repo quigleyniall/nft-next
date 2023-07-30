@@ -8,10 +8,28 @@ mongoose.connect(process.env.MONGODB_URI || serverRuntimeConfig.connectionString
 mongoose.Promise = global.Promise;
 
 export const db = {
-    User: userModel()
+    User: userModel(),
+    Suggestions: suggestionModel()
 };
 
 // mongoose models with schema definitions
+
+function suggestionModel() {
+    const schema = new Schema({
+        idea: {type: String, required: true}
+    });
+
+    schema.set('toJSON', {
+        virtuals: true,
+        versionKey: false,
+        transform: function (doc, ret) {
+            delete ret._id;
+            delete ret.hash;
+        }
+    });
+
+    return mongoose.models.Suggestions || mongoose.model('Suggestions', schema);
+}
 
 function userModel() {
     const schema = new Schema({
