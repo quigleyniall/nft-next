@@ -24,7 +24,8 @@ const BarChart = () => {
                 horizontal: true,
                 barHeight: '20px',
                 colors: {
-                  backgroundBarColors: ['#bbb']
+                  backgroundBarColors: ['#bbb'],
+                  
                 }
               },
             },
@@ -62,6 +63,8 @@ const BarChart = () => {
             },
             fill: {
               opacity: 1,
+              colors: ['#11B981']
+              
             }
         },
         
