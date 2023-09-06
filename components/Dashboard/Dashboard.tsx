@@ -16,7 +16,7 @@ const Dashboard = ({ children }) => {
           background: ${theme.palette.mode === "light" ? "#F4F5FA" : "#161C24"};
         }
       `}</style>
-      <Appbar />
+      <Appbar authenticated/>
       <Box
         sx={{
           display: "flex",

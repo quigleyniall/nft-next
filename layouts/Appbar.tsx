@@ -6,7 +6,7 @@ import { signOut } from "next-auth/react";
 import { useRouter } from "next/router";
 
 
-const AppBar = () => {
+const AppBar = ({ authenticated = false}) => {
   const { theme, switchTheme, setOpen } = useContext(CustomTheme);
   const {push } = useRouter();
   
@@ -27,11 +27,11 @@ const AppBar = () => {
         }}
       >
         <Box sx={{ display: "flex", flex: 1, justifyContent: "space-between" }}>
-          <IconButton onClick={setOpen} color="inherit">
+          {authenticated && <IconButton onClick={setOpen} color="inherit">
             <Menu />
-          </IconButton>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: '8px'}}>
-            <Button onClick={logout}>Sign out</Button>
+          </IconButton>}
+          <Box sx={{ display: 'flex', flex: 1, justifyContent: 'flex-end', alignItems: 'center', gap: '8px'}}>
+            {authenticated && <Button onClick={logout}>Sign out</Button>}
             <IconButton sx={{ ml: 1 }} onClick={switchTheme} color="inherit">
               {theme.palette.mode === "dark" ? (
                 <Brightness7 />
