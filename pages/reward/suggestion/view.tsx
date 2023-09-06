@@ -32,7 +32,7 @@ const ViewSuggestions = () => {
         rowSpacing={3}
         item
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-        sx={{ padding: "32px", background: "#F4F5FA" }}
+        sx={{ padding: "32px", background: "background.page" }}
       >
        {suggestions.map(({idea, id}, index) => (
         <Card key={index}>

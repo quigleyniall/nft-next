@@ -29,7 +29,7 @@ const Suggestion = () => {
         rowSpacing={3}
         container
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-        sx={{ padding: "32px", background: "#F4F5FA" }}
+        sx={{ padding: "32px", background: "background.page" }}
       >
         {offers.map((offer, index) => (
           <Grid key={index} item xs={4}>

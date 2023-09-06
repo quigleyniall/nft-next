@@ -2,6 +2,7 @@ import { Button, Typography } from "@mui/material";
 import trophyImg from "../../../../assets/trophy.png";
 import AnnouncementWrapper from "../../Wrapper";
 import Link from "next/link";
+import Image from "next/image";
 
 const TopSeller = ({ title = "Congratulations John!"}) => {
   return (
@@ -10,7 +11,7 @@ const TopSeller = ({ title = "Congratulations John!"}) => {
         <Typography variant="body1">Best Seller of the Month</Typography>
         <Typography variant="h5">$42.8k</Typography>
         <Button component="a" href='/' variant="contained">View Sales</Button>
-        <img
+        <Image
           src={trophyImg}
           width="100"
           height="100"

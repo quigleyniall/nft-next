@@ -10,7 +10,7 @@ const Goals = () => {
         rowSpacing={3}
         item
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-        sx={{ padding: "32px", background: "#F4F5FA" }}
+        sx={{ padding: "32px", background: "background.page" }}
       >
         <Paper sx={{ padding: "16px", marginBottom: "24px" }}>
             <CardTitle sx={{marginBottom: '12px'}}>Conversions this week</CardTitle>

@@ -12,7 +12,7 @@ const Suggestion = () => {
         rowSpacing={3}
         item
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-        sx={{ padding: "32px", background: "#F4F5FA" }}
+        sx={{ padding: "32px", background: "background.page" }}
       >
         <Card variant="outlined" sx={{padding: "32px"}}>
           <H4 sx={{mb: 3}}>Poll</H4>
