@@ -36,7 +36,7 @@ export const sections = {
       { title: "Upcoming Events", icon: "AccountCircle" },
       { title: "Calender", icon: "DateRange" },
     ],
-    Feedback: [
-      { title: "Contact", icon: "Drafts" },
+    Help: [
+      { title: "Support", icon: "Drafts", href: '/support' },
     ]
   };

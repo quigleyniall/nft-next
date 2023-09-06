@@ -18,6 +18,7 @@ export const CustomThemeProvider = ({ children }) => {
 
   useEffect(() => {
     setHydrated(true);
+    console.log(cookies['theme-mode']);
     if (!cookies["theme-mode"])
       setCookie("theme-mode", cookies["theme-mode"] ?? "light");
     if (!cookies["sidebar"]) setCookie("sidebar", cookies["sidebar"] ?? "open");

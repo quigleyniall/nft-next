@@ -37,7 +37,7 @@ const Label = ({ label, value, index }) => (
 const SalesOverview = ({ title = "Sales Overview" }) => {
   return (
     <AnnouncementWrapper title={title}>
-      <Grid container sm={12}>
+      <Grid container>
         <Grid item sm={6}>
           <Donut />
         </Grid>
@@ -55,7 +55,7 @@ const SalesOverview = ({ title = "Sales Overview" }) => {
             </Box>
           </Box>
           <Divider sx={{ margin: "24px 0" }} />
-          <Grid container sm={12} columnSpacing={2} rowSpacing={2}>
+          <Grid container columnSpacing={2} rowSpacing={2}>
             <Grid item sm={6}>
               <Label label="Team" value="$23,000" index={0} />
             </Grid>

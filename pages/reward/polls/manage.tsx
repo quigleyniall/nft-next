@@ -1,11 +1,28 @@
-import { Card, FormControl, Button, Grid, Typography } from "@mui/material";
+import {
+  Card,
+  FormControl,
+  Button,
+  Grid,
+  Typography,
+  Box,
+} from "@mui/material";
 import Dashboard from "@/components/Dashboard/Dashboard";
-import TextArea from "@/components/forms/TextArea/TextArea";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { H1, H4 } from "@/components/typography/typography";
+import axios from "axios";
 
-const Suggestion = () => {
-    const [idea, setIdea] = useState('')
+const PollManage = () => {
+  const [polls, setPolls] = useState([]);
+
+  useEffect(() => {
+    const getPolls = async () => {
+      const { data } = await axios.get("/api/poll/create");
+      setPolls(data);
+      console.log(polls);
+    };
+    getPolls();
+  }, []);
+
   return (
     <Dashboard>
       <Grid
@@ -14,22 +31,21 @@ const Suggestion = () => {
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
         sx={{ padding: "32px", background: "background.page" }}
       >
-        <Card variant="outlined" sx={{padding: "32px"}}>
-          <H4 sx={{mb: 3}}>Poll</H4>
-          
-          <Button
-            disabled={!idea}
-            size="large"
-            type="submit"
-            variant="contained"
-            sx={{ width: "100%" }}
-            >
-                    Vote
-                  </Button>
-        </Card>
+        {polls.map(({ question, options }, index) => (
+          <Card
+            key={index}
+            variant="outlined"
+            sx={{ padding: "32px", marginBottom: "24px" }}
+          >
+            <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: 'center' }}>
+              <H4>Poll - {question}</H4>
+              <Button variant="contained">Delete</Button>
+            </Box>
+          </Card>
+        ))}
       </Grid>
     </Dashboard>
   );
 };
 
-export default Suggestion;
+export default PollManage;

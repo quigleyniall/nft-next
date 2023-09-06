@@ -12,7 +12,7 @@ const Home = () => {
     <Grid
       container
       rowSpacing={3}
-      columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+      columnSpacing={{ xs: 1, sm: 1, md: 3 }}
       sx={{
         padding: "32px",
       }}
@@ -27,7 +27,6 @@ const Home = () => {
         <Sold />
       </Grid>
       <Grid item md={12}>
-        
         <SalesOverview />
       </Grid>
     </Grid>
