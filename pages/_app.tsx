@@ -5,11 +5,11 @@ import { CustomThemeProvider } from "../context/theme";
 export default function RootLayout({ Component, pageProps }) {
  
   return (
-    <SessionProvider>
+    // <SessionProvider>
       <CustomThemeProvider>
           {<Component {...pageProps} />}
       </CustomThemeProvider>
-    </SessionProvider>
+    // </SessionProvider>
   );
 }
 

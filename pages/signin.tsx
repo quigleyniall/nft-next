@@ -8,8 +8,8 @@ import {
 } from "next-auth/react";
 import { InferGetServerSidePropsType } from "next";
 import { Box, Button, Card } from "@mui/material";
-import Image from "next/image";
 import AppBar from "@/layouts/Appbar";
+import { H1 } from "@/components/typography/typography";
 
 const providersIcons = {
   Salesforce: "/icons/salesforce-svgrepo-com.svg",
@@ -27,23 +27,27 @@ const SignIn = ({
         }
       `}</style>
       <AppBar />
+      
       <Box
       sx={{
         padding: 0,
         width: "100%",
         height: "100vh",
         display: 'flex',
+        flexWrap: 'wrap',
         justifyContent: 'center',
-        alignItems: 'center',
+        alignContent: 'center',
         boxSizing: 'border-box',
         backgroundColor: 'background.page'
       }}>
+        <H1>Welcome to Performance Tracker</H1>
+        <Box sx={{width: '100%', textAlign: 'center', marginTop: '16px'}}>
         {providers && csrfToken ? (
           Object.values(providers).map((item: any, index) => {
             if (item.id !== "email") {
               return (
                 <Button key={item.id} variant="contained" onClick={() => signIn(item.id)}>
-                  Salesforce Login
+                  Login
                 </Button>
               );
             }
@@ -51,6 +55,7 @@ const SignIn = ({
         ) : (
           <p>No Available Providers</p>
         )}
+        </Box>
       </Box>
     </>
   );

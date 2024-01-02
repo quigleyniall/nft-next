@@ -35,3 +35,12 @@ export const CardTitle = ({ children, center, sx = {} }) => (
     {children}
   </Typography>
 );
+
+export const ErrorMsg = ({ children, center = false }) => (
+  <Typography
+  variant="h2"
+  classes={{ root: `${styles.h2} ${center ? styles.center : ""}` }}
+>
+  {children}
+</Typography>
+)

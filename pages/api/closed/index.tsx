@@ -11,7 +11,7 @@ export default async function handler(
 
     //@ts-ignored
     var records: Array = [];
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
         //@ts-ignored
         conn.query(
             "SELECT owner.name, CloseDate, Name, Amount, StageName FROM Opportunity WHERE StageName = 'Closed Won' LIMIT 1000"
@@ -32,6 +32,7 @@ export default async function handler(
             })
             .on('error', function (err: any) {
                 console.error(err);
+                // return reject;
             })
             .run({ autoFetch: true, maxFetch: 4000 });
     })
