@@ -5,9 +5,12 @@ import Appbar from "../../layouts/Appbar";
 import { sections } from "../../utils/SideBarSections";
 import { CustomTheme } from "@/context/theme";
 import { useContext } from "react";
+import { ErrorMsg } from "../typography/typography";
+import { Errors } from "@/context/errors";
 
 const Dashboard = ({ children }) => {
   const { theme } = useContext(CustomTheme);
+  const {errorMsg, errorSet} = useContext(Errors)
 
   return (
     <>
@@ -32,6 +35,7 @@ const Dashboard = ({ children }) => {
           sx={{ flex: "1", backgroundColor: "background.page" }}
         >
           <AppbarOffset />
+          {!!errorMsg && <ErrorMsg>{errorMsg}</ErrorMsg>}
           {children}
         </Box>
       </Box>

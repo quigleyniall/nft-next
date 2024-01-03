@@ -4,6 +4,9 @@ const font = (mode) => ({
         h1: {
           color: "white",
         },
+        h2: {
+          color: "white",
+        },
         h5: {
           margin: "1rem 0px",
           fontWeight: "500",
@@ -36,6 +39,9 @@ const font = (mode) => ({
       }
     : {
         h1: {
+          color: "black",
+        },
+        h2: {
           color: "black",
         },
         h5: {

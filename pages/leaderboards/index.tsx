@@ -5,12 +5,13 @@ import { CustomTheme } from "../../context/theme";
 import axios from "axios";
 import Dashboard from "@/components/Dashboard/Dashboard";
 import {ErrorMsg} from "@/components/typography/typography"
+import { Errors } from "@/context/errors";
 
 const Leaderboards = () => {
   const { theme } = useContext(CustomTheme);
   const [users, setUsers] = useState([]);
   const [userData, setUserData] = useState([])
-  const [errorSet, setError] = useState(false);
+  const {setError} = useContext(Errors);
 
   useEffect(() => {
     const closed = async () => {
@@ -25,8 +26,8 @@ const Leaderboards = () => {
         console.log(userData);
         setUsers(data);
       } catch (err) {
-        console.log('hithere', err);
-          setError(true);
+        
+          setError('Whoops! Something Went Wrong!');
         }
     };
     closed();
@@ -40,7 +41,7 @@ const Leaderboards = () => {
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
         sx={{ padding: "32px", background: 'background.page' }}
       >
-       {errorSet && <ErrorMsg>Whoops! Something went wrong!</ErrorMsg>}
+       
         {Object.keys(userData).map((user, index) => (
            <LineItem name={user} amount={`$${userData[user]}`} key={index} />
         ))}

@@ -12,7 +12,7 @@ const AppBar = ({ authenticated = false}) => {
   
 
   const logout = () => {
-    signOut();
+    signOut({redirect: false});
     push('/signin');
   }
   

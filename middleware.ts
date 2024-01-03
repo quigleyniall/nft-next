@@ -9,6 +9,9 @@ export default withAuth({
         return token?.userRole === "admin";
       }
       // `/me` only requires the user to be logged in
+      if (req.nextUrl.pathname === "/signout") {
+        return false;
+      }
 
       // temp fix to access application
       return true;
