@@ -16,8 +16,12 @@ import { Dna } from "react-loader-spinner";
 
 const ViewSuggestions = () => {
   const [suggestions, setSuggestions] = useState([]);
-  const { data, pending, error, success } = useDataSource({
+  const { data, statuses } = useDataSource({
     url: "/api/suggestion",
+    errorMsg:
+    "Problem retrieving suggestions. If the problem presists, please contact support for further assistance.",
+  successNoResultMsg:
+    "There have been no suggestions made. Please check again later!.",
   });
 
   useEffect(() => {
@@ -32,7 +36,7 @@ const ViewSuggestions = () => {
     }
   };
   return (
-    <Dashboard pending={pending}>
+    <Dashboard {...statuses}>
       <Grid
         rowSpacing={3}
         item
@@ -40,7 +44,7 @@ const ViewSuggestions = () => {
         sx={{ padding: "32px", background: "background.page" }}
       >
        
-        {success &&
+        {
           suggestions.map(({ idea, id }, index) => (
             <Card key={index}>
               <Typography>{idea}</Typography>

@@ -1,9 +1,7 @@
 import {
   Card,
-  FormControl,
   Button,
   Grid,
-  Typography,
   Box,
 } from "@mui/material";
 import Dashboard from "@/components/Dashboard/Dashboard";
@@ -13,14 +11,20 @@ import { useDataSource } from "@/hooks/useDataSource";
 
 const PollManage = () => {
   const [polls, setPolls] = useState([]);
-  const {data, pending} = useDataSource({url: "/api/poll/create"})
+  const { data, statuses } = useDataSource({
+    url: "/api/poll/create",
+    errorMsg:
+      "Problem retrieving Polls. If the problem presists, please contact support for further assistance.",
+    successNoResultMsg:
+      "No Polls have been created yet.",
+  });
 
   useEffect(() => {
       setPolls(data);
   }, [data]);
 
   return (
-    <Dashboard pending={pending}>
+    <Dashboard {...statuses}>
       <Grid
         rowSpacing={3}
         item

@@ -75,20 +75,20 @@ const Dashboard = ({ children, pending = false, error = false, success = false }
               />
             </Box>
           )}
-            {error && (
+            {error?.status && (
           <Card sx={{margin: '32px', padding: '12px', display: 'flex', alignItems: 'center', gap: '16px'}}>
              <ErrorOutlineIcon
             sx={{ fontSize: "4rem", color: "red" }}
           />
-            <ErrorMsg>Problem retrieving leaderboards. If the problem presists, please contact support for further assistance.</ErrorMsg>
+            <ErrorMsg>{error.msg}</ErrorMsg>
           </Card>
         )}
-        {success && data.length === 0 && (
+        {success?.status && (
            <Card sx={{margin: '32px', padding: '12px', display: 'flex', alignItems: 'center', gap: '16px'}}>
            <ErrorOutlineIcon
           sx={{ fontSize: "4rem", color: "grey" }}
         />
-          <ErrorMsg>Leaderboards haven't been configured yet, please contact support for further assistance.</ErrorMsg>
+          <ErrorMsg>{success.msg}</ErrorMsg>
         </Card>
         )}
           {children}
