@@ -2,22 +2,18 @@ import { Card, FormControl, Button, Grid, Typography, Box } from "@mui/material"
 import Dashboard from "@/components/Dashboard/Dashboard";
 import { useEffect, useState } from "react";
 import { H1, H4 } from "@/components/typography/typography";
-import axios from "axios";
+import { useDataSource } from "@/hooks/useDataSource";
 
 const PollCreate = () => {
   const [polls, setPolls] = useState([]);
+  const {data, pending} = useDataSource({url: "/api/poll/create"})
 
   useEffect(() => {
-    const getPolls = async () => {
-      const { data } = await axios.get("/api/poll/create");
-      setPolls(data);
-      console.log(polls);
-    };
-    getPolls();
-  }, []);
+    setPolls(data);
+  }, [data]);
 
   return (
-    <Dashboard>
+    <Dashboard pending={pending}>
       <Grid
         rowSpacing={3}
         item

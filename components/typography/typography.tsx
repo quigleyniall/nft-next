@@ -38,8 +38,8 @@ export const CardTitle = ({ children, center, sx = {} }) => (
 
 export const ErrorMsg = ({ children, center = false }) => (
   <Typography
-  variant="h2"
-  classes={{ root: `${styles.h2} ${center ? styles.center : ""}` }}
+  variant="h6"
+  
 >
   {children}
 </Typography>

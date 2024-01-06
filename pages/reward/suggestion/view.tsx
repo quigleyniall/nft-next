@@ -1,49 +1,55 @@
-import { Card, FormControl, Button, Grid, Typography } from "@mui/material";
+import {
+  Card,
+  FormControl,
+  Button,
+  Grid,
+  Typography,
+  Box,
+} from "@mui/material";
 import Dashboard from "@/components/Dashboard/Dashboard";
 import TextArea from "@/components/forms/TextArea/TextArea";
 import { useState, useEffect } from "react";
 import { H1, H4 } from "@/components/typography/typography";
-import axios from 'axios';
+import axios from "axios";
+import { useDataSource } from "@/hooks/useDataSource";
+import { Dna } from "react-loader-spinner";
 
 const ViewSuggestions = () => {
   const [suggestions, setSuggestions] = useState([]);
+  const { data, pending, error, success } = useDataSource({
+    url: "/api/suggestion",
+  });
 
   useEffect(() => {
-    const getData = async () => {
-        const {data} = await axios.get('/api/suggestion');
-        console.log(data);
-        setSuggestions(data);
-    }
-
-    getData();
-  }, [])
+    setSuggestions(data);
+  }, [data]);
 
   const deleteSuggestion = async (id) => {
     console.log(id);
-    const {data} = await axios.delete('/api/suggestion', {id});
+    const { data } = await axios.delete("/api/suggestion", { id });
     if (data.success) {
-        setSuggestions(suggestions.filter(suggestion => suggestion.id != id));
+      setSuggestions(suggestions.filter((suggestion) => suggestion.id != id));
     }
-  }
+  };
   return (
-
-    <Dashboard>
+    <Dashboard pending={pending}>
       <Grid
         rowSpacing={3}
         item
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
         sx={{ padding: "32px", background: "background.page" }}
       >
-       {suggestions.map(({idea, id}, index) => (
-        <Card key={index}>
-            <Typography>{idea}</Typography>
-            <Button onClick={() => deleteSuggestion(id)}>Remove</Button>
-        </Card>
-       ))}
+       
+        {success &&
+          suggestions.map(({ idea, id }, index) => (
+            <Card key={index}>
+              <Typography>{idea}</Typography>
+              <Button onClick={() => deleteSuggestion(id)}>Remove</Button>
+            </Card>
+          ))}
       </Grid>
     </Dashboard>
   );
 };
-
 
 export default ViewSuggestions;

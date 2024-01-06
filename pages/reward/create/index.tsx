@@ -117,6 +117,7 @@ const StoreAsset = () => {
                       name="description"
                       placeholder="Description"
                       onChange={(e) => setDesc(e.target.value)}
+                      value={desc}
                     />
                   </FormControl>
                   <Box sx={{ display: "flex", gap: "16px" }}>
@@ -210,7 +211,7 @@ const StoreAsset = () => {
                   </Grid>
 
                   <Button
-                    disabled={!name || !desc || !image}
+                    // disabled={!name || !desc || !image}
                     size="large"
                     type="submit"
                     variant="contained"
