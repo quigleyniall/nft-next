@@ -83,7 +83,7 @@ const Dashboard = ({ children, pending = false, error = false, success = false }
             <ErrorMsg>{error.msg}</ErrorMsg>
           </Card>
         )}
-        {success?.status && (
+        {success?.status && success.msg && (
            <Card sx={{margin: '32px', padding: '12px', display: 'flex', alignItems: 'center', gap: '16px'}}>
            <ErrorOutlineIcon
           sx={{ fontSize: "4rem", color: "grey" }}

@@ -15,7 +15,7 @@ const Goals = () => {
         <Paper sx={{ padding: "16px", marginBottom: "24px" }}>
             <CardTitle sx={{marginBottom: '12px'}}>Conversions this week</CardTitle>
             
-          <BarChart startText="$0.00" endText="$50,000" max={50000} value={10000} minThreshold={9000} maxThreshold={30000}/>
+          <BarChart startText="$0.00" endText="$20,000" max={20000} value={10000} minThreshold={9000} maxThreshold={30000}/>
         </Paper>
         <Paper sx={{ padding: "16px", marginBottom: "24px" }}>
         

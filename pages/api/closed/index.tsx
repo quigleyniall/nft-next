@@ -13,11 +13,13 @@ export default async function handler(
     var records: Array = [];
     return new Promise((resolve, reject) => {
         //@ts-ignored
+
+        // https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm
         conn.query(
-            "SELECT owner.name, CloseDate, Name, Amount, StageName FROM Opportunity WHERE StageName = 'Closed Won' LIMIT 1000"
-            // 'SELECT FirstName, LastName FROM User LIMIT 1000'
+            "SELECT owner.name, CloseDate, Name, Amount, StageName FROM Opportunity WHERE StageName = 'Closed Won' AND CloseDate = LAST_N_MONTHS:6  LIMIT 1000"
         )
             .on('record', function (record: any) {
+                console.log(record)
                 records.push({
                     name: record.Owner.Name,
                     opportunityName: record.Name,
