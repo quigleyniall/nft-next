@@ -22,7 +22,7 @@ export const sections = {
       { title: "Manage", icon: "ShoppingBag", href: '/reward/polls/manage' },
     ],
     Recognition: [
-      { title: "Recognition", icon: "Share" },
+      { title: "Recognition", icon: "Share", href: '/recognition' },
     ],
     // Social: [
     //   { title: "Social Media", icon: "Share" },

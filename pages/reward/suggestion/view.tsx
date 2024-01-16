@@ -19,9 +19,9 @@ const ViewSuggestions = () => {
   const { data, statuses, forceRefresh } = useDataSource({
     url: "/api/suggestion",
     errorMsg:
-    "Problem retrieving suggestions. If the problem presists, please contact support for further assistance.",
-  successNoResultMsg:
-    "There have been no suggestions made. Please check again later!.",
+      "Problem retrieving suggestions. If the problem presists, please contact support for further assistance.",
+    successNoResultMsg:
+      "There have been no suggestions made. Please check again later!.",
   });
 
   useEffect(() => {
@@ -44,14 +44,12 @@ const ViewSuggestions = () => {
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
         sx={{ padding: "32px", background: "background.page" }}
       >
-       
-        {
-          suggestions.map(({ idea, id }, index) => (
-            <Card key={index}>
-              <Typography>{idea}</Typography>
-              <Button onClick={() => deleteSuggestion(id)}>Remove</Button>
-            </Card>
-          ))}
+        {suggestions.map(({ idea, id }, index) => (
+          <Card key={index} sx={{ display: "flex", padding: "16px" }}>
+            <Typography>{idea}</Typography>
+            <Button onClick={() => deleteSuggestion(id)}>Remove</Button>
+          </Card>
+        ))}
       </Grid>
     </Dashboard>
   );
