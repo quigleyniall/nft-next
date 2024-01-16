@@ -6,7 +6,7 @@ interface Props {
     button: string;
 }
 
-const Reward = ({title, desc, button}: Props) => (
+const Reward = ({id, title, desc, button = "View More", onDelete}: Props) => (
       <Card sx={{ maxWidth: 345 }}>
         <CardMedia
           sx={{ height: 140 }}
@@ -23,6 +23,7 @@ const Reward = ({title, desc, button}: Props) => (
         </CardContent>
         <CardActions>
           <Button size="small">{button}</Button>
+          <Button size="small" color="error" onClick={(id) => onDelete(id)}>Delete</Button>
         </CardActions>
       </Card>
 )

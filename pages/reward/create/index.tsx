@@ -23,6 +23,7 @@ import TimeLine from "../../../components/TimeLine/TimeLine";
 import Switch from "../../../components/forms/Switch/Switch";
 import Dashboard from "@/components/Dashboard/Dashboard";
 import DateInput from "@/components/forms/Date/DateInput";
+import axios from "axios";
 
 interface Modal {
   success?: boolean;
@@ -56,11 +57,11 @@ const ERROR = {
 };
 
 const StoreAsset = () => {
-  const [name, setName] = useState("");
+  const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
-  const [type, setType] = useState('');
-  const [numAvail, setNumAvail] = useState(1)
-  const [user, setUser] = useState('All')
+  const [type, setType] = useState("");
+  const [numAvail, setNumAvail] = useState(1);
+  const [user, setUser] = useState("All");
   const [image, setImage] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
   const [sending, setSending] = useState(false);
@@ -70,29 +71,32 @@ const StoreAsset = () => {
   const [showPointsInput, setShowPointsInput] = useState(false);
   const [showTimeInput, setShowTimeInput] = useState(false);
   const [points, setPoints] = useState(0);
-  const [date, setDate] = useState(null)
+  const [date, setDate] = useState(null);
 
   const onFormSubmit = (e) => {
     e.preventDefault();
     const body = {
-      name, 
+      title,
       desc,
       type,
       numAvail,
       points,
       date,
-      image
-    }
-  }
+      image,
+    };
+
+    
+    const sendRequest = async () => {
+      const { data } = await axios.post("/api/rewards", { body });
+      console.log(data);
+    };
+
+    sendRequest();
+  };
 
   const onImageChange = (e) => {
-    console.log(e)
-    console.log(e.target.files[0])
-    console.log(URL.createObjectURL(e.target.files[0]));
-    setPreviewUrl(URL.createObjectURL(e.target.files[0]))
-  }
-
-  
+    setPreviewUrl(URL.createObjectURL(e.target.files[0]));
+  };
 
   return (
     <Dashboard>
@@ -130,10 +134,10 @@ const StoreAsset = () => {
                 <Grid item xs={8}>
                   <FormControl sx={{ mb: 3, width: "100%" }}>
                     <TextInput
-                      name="name"
-                      onChange={(e) => setName(e.target.value)}
-                      label="Name"
-                      value={name}
+                      name="title"
+                      onChange={(e) => setTitle(e.target.value)}
+                      label="Title"
+                      value={title}
                     />
                   </FormControl>
                   <FormControl sx={{ mb: 3, width: "100%" }}>
@@ -150,7 +154,7 @@ const StoreAsset = () => {
                       <Dropdown
                         label="Type"
                         value={type}
-                        onChange={e => setType(e.target.value)}
+                        onChange={(e) => setType(e.target.value)}
                         options={[
                           { label: "Money", value: 30 },
                           { label: "Gift", value: 20 },
@@ -190,7 +194,10 @@ const StoreAsset = () => {
                       sx={{ mb: 3, width: "100%" }}
                       value="time"
                       control={
-                        <Switch label="Points Based" onChange={() => setShowTimeInput(!showTimeInput)} />
+                        <Switch
+                          label="Points Based"
+                          onChange={() => setShowTimeInput(!showTimeInput)}
+                        />
                       }
                       label="Time Based"
                       labelPlacement="end"
@@ -212,7 +219,10 @@ const StoreAsset = () => {
                   <Grid item xs={12}>
                     {showTimeInput && (
                       <FormControl sx={{ mb: 3, width: "100%" }}>
-                        <DateInput value={date} onChange={(newValue) => setDate(newValue)} />
+                        <DateInput
+                          value={date}
+                          onChange={(newValue) => setDate(newValue)}
+                        />
                       </FormControl>
                     )}
                   </Grid>
@@ -222,7 +232,7 @@ const StoreAsset = () => {
                       <Dropdown
                         label="User Specific"
                         value={user}
-                        onChange={e => setUser(e.target.value)}
+                        onChange={(e) => setUser(e.target.value)}
                         options={[
                           { label: "All", value: "All" },
                           { label: "Jeff", value: "Jeff" },
@@ -235,7 +245,12 @@ const StoreAsset = () => {
 
                   <Grid item xs={12}>
                     <FormControl sx={{ mb: 3, width: "100%" }}>
-                      <ImageInput onChange={onImageChange} objectURL={previewUrl} name="image" value={image} />
+                      <ImageInput
+                        onChange={onImageChange}
+                        objectURL={previewUrl}
+                        name="image"
+                        value={image}
+                      />
                     </FormControl>
                   </Grid>
 

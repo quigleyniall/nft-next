@@ -14,7 +14,7 @@ import { useDataSource } from "@/hooks/useDataSource";
 const PollCreate = () => {
   const [polls, setPolls] = useState([]);
   const { data, statuses } = useDataSource({
-    url: "/api/poll/create",
+    url: "/api/poll",
     errorMsg:
       "Problem retrieving Polls. If the problem presists, please contact support for further assistance.",
     successNoResultMsg:
@@ -46,7 +46,7 @@ const PollCreate = () => {
             >
               {options.map(({ name, value }) => (
                 <Button variant="outlined" sx={{ flex: 1 }}>
-                  {name}
+                  {value}
                 </Button>
               ))}
             </Box>

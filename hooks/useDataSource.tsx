@@ -13,6 +13,7 @@ export const useDataSource = ({
   const [data, setData] = useState([]);
   const { addMessage } = useContext(Snackbar);
   const [refreshUrl, setRefreshUrl] = useState(url);
+  
 
   useEffect(() => {
     setPending(true);
@@ -33,6 +34,10 @@ export const useDataSource = ({
     getData();
   }, [refreshUrl]);
 
+  const forceRefresh = () => {
+    setRefreshUrl(url => url.includes('?') ? url + '&reload=true' : url + '?reload=true')
+  }
+
   return {
     data,
     statuses: {
@@ -44,5 +49,6 @@ export const useDataSource = ({
       error: { status: error, msg: errorMsg },
     },
     setRefreshUrl,
+    forceRefresh,
   };
 };

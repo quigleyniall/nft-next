@@ -22,14 +22,14 @@ export default async function handler(
         return res.json(results);
     }
 
-    // if (req.method.toLowerCase() === 'delete') {
-    //     try {
-    //         const {id} = req.body;
-    //         await Suggestion.deleteOne({id});
-    //         return res.json({success: true})
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
+    if (req.method.toLowerCase() === 'delete') {
+        try {
+            const {id} = req.body;
+            await Poll.deleteOne({id});
+            return res.json({success: true})
+        } catch (err) {
+            console.log(err);
+        }
        
-    // }
+    }
 }

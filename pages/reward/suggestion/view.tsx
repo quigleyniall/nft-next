@@ -16,7 +16,7 @@ import { Dna } from "react-loader-spinner";
 
 const ViewSuggestions = () => {
   const [suggestions, setSuggestions] = useState([]);
-  const { data, statuses } = useDataSource({
+  const { data, statuses, forceRefresh } = useDataSource({
     url: "/api/suggestion",
     errorMsg:
     "Problem retrieving suggestions. If the problem presists, please contact support for further assistance.",
@@ -32,7 +32,8 @@ const ViewSuggestions = () => {
     console.log(id);
     const { data } = await axios.delete("/api/suggestion", { id });
     if (data.success) {
-      setSuggestions(suggestions.filter((suggestion) => suggestion.id != id));
+      // setSuggestions(suggestions.filter((suggestion) => suggestion.id != id));
+      forceRefresh();
     }
   };
   return (

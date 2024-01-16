@@ -13,6 +13,7 @@ export const db = {
   User: userModel(),
   Suggestions: suggestionModel(),
   Polls: pollModel(),
+  Rewards: rewardsModel()
 };
 
 // mongoose models with schema definitions
@@ -32,6 +33,32 @@ function suggestionModel() {
   });
 
   return mongoose.models.Suggestions || mongoose.model("Suggestions", schema);
+}
+
+function rewardsModel() {
+  const schema = new Schema({
+    title: { type: String, required: true }, 
+    desc: { type: String, required: true }, 
+    type: { type: String, required: true }, 
+    numAvail: { type: String, required: true }, 
+    points: { type: String, required: true }, 
+    date: { type: Date, required: false }, 
+    image: {
+      data: Buffer,
+      contentType: String
+  }
+  });
+
+  schema.set("toJSON", {
+    virtuals: true,
+    versionKey: false,
+    transform: function (doc, ret) {
+      delete ret._id;
+      delete ret.hash;
+    },
+  });
+
+  return mongoose.models.Rewards || mongoose.model("Rewards", schema);
 }
 
 function pollModel() {
