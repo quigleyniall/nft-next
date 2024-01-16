@@ -13,7 +13,6 @@ const fallbackImg =
   "https://camlockfittings.com.au/static/version1679642881/frontend/Pearl/weltpixel_custom/en_US/Magento_Catalog/images/product/placeholder/image.jpg";
 
 const ImageInput = ({
-  label,
   objectURL = undefined,
   onChange,
   name,
@@ -49,6 +48,7 @@ const ImageInput = ({
           type="file"
           hidden
           accept=".TIFF,.JPEG,.GIF,.PNG"
+          
           name={name}
           onChange={onChange}
         />

@@ -5,10 +5,10 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
-
+    
     const conn = await getSFDCConnection(req, res);
     if (!conn) return;
-
+    
     //@ts-ignored
     var records: Array = [];
     return new Promise((resolve, reject) => {
@@ -16,7 +16,7 @@ export default async function handler(
 
         // https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm
         conn.query(
-            "SELECT owner.name, CloseDate, Name, Amount, StageName FROM Opportunity WHERE StageName = 'Closed Won' AND CloseDate = LAST_N_MONTHS:6  LIMIT 1000"
+            `SELECT owner.name, CloseDate, Name, Amount, StageName FROM Opportunity WHERE StageName = 'Closed Won' AND CloseDate = ${req.query.closedDate}  LIMIT 1000`
         )
             .on('record', function (record: any) {
                 console.log(record)
@@ -34,7 +34,8 @@ export default async function handler(
             })
             .on('error', function (err: any) {
                 console.error(err);
-                // return reject;
+                res.status(500).send(err);
+                return reject;
             })
             .run({ autoFetch: true, maxFetch: 4000 });
     })

@@ -1,16 +1,22 @@
 import * as React from "react";
 import { ToggleButton, ToggleButtonGroup } from "@mui/material";
 
-const ButtonFilter = ({ options, defaultValue, onChange }) => {
+const ButtonFilter = ({ options, value, defaultValue, onChange }) => {
   return (
     <ToggleButtonGroup
       color="primary"
-      value={defaultValue}
+      value={value}
+      defaultValue={defaultValue}
       exclusive
       onChange={onChange}
     >
       {options.map(({ value, label }) => (
-        <ToggleButton key={value} value={value} size="medium" sx={{height: '53px'}}>
+        <ToggleButton
+          key={value}
+          value={value}
+          size="medium"
+          sx={{ height: "53px" }}
+        >
           {label}
         </ToggleButton>
       ))}

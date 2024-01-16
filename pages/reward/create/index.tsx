@@ -58,8 +58,11 @@ const ERROR = {
 const StoreAsset = () => {
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
+  const [type, setType] = useState('');
+  const [numAvail, setNumAvail] = useState(1)
+  const [user, setUser] = useState('All')
   const [image, setImage] = useState(null);
-  const [createObjectURL, setCreateObjectURL] = useState(null);
+  const [previewUrl, setPreviewUrl] = useState(null);
   const [sending, setSending] = useState(false);
   const [modalDetails, setModalDetails] = useState<Modal>();
   const [ipfs, setIpfs] = useState("");
@@ -68,6 +71,28 @@ const StoreAsset = () => {
   const [showTimeInput, setShowTimeInput] = useState(false);
   const [points, setPoints] = useState(0);
   const [date, setDate] = useState(null)
+
+  const onFormSubmit = (e) => {
+    e.preventDefault();
+    const body = {
+      name, 
+      desc,
+      type,
+      numAvail,
+      points,
+      date,
+      image
+    }
+  }
+
+  const onImageChange = (e) => {
+    console.log(e)
+    console.log(e.target.files[0])
+    console.log(URL.createObjectURL(e.target.files[0]));
+    setPreviewUrl(URL.createObjectURL(e.target.files[0]))
+  }
+
+  
 
   return (
     <Dashboard>
@@ -97,7 +122,7 @@ const StoreAsset = () => {
           <Card sx={{ padding: "1.25rem", position: "relative" }}>
             {/* <TimeLine /> */}
             <Typography variant="h5">Create a Reward</Typography>
-            <form>
+            <form onSubmit={onFormSubmit}>
               <Grid container>
                 <Grid item xs={4}>
                   <Typography variant="body1">General Details</Typography>
@@ -124,6 +149,8 @@ const StoreAsset = () => {
                     <FormControl sx={{ mb: 3, flex: 1 }}>
                       <Dropdown
                         label="Type"
+                        value={type}
+                        onChange={e => setType(e.target.value)}
                         options={[
                           { label: "Money", value: 30 },
                           { label: "Gift", value: 20 },
@@ -133,10 +160,9 @@ const StoreAsset = () => {
                     </FormControl>
                     <FormControl sx={{ mb: 0, flex: 1 }}>
                       <NumberInput
-                        name="name"
-                        onChange={(e) => setName(e.target.value)}
+                        onChange={(e) => setNumAvail(e.target.value)}
                         label="Number Available"
-                        value={name}
+                        value={numAvail}
                       />
                     </FormControl>
                   </Box>
@@ -194,8 +220,11 @@ const StoreAsset = () => {
                   <Grid item xs={12}>
                     <FormControl sx={{ mb: 3, width: "100%" }}>
                       <Dropdown
-                        label="User"
+                        label="User Specific"
+                        value={user}
+                        onChange={e => setUser(e.target.value)}
                         options={[
+                          { label: "All", value: "All" },
                           { label: "Jeff", value: "Jeff" },
                           { label: "Noel", value: "Noel" },
                           { label: "Graham", value: "Graham" },
@@ -206,7 +235,7 @@ const StoreAsset = () => {
 
                   <Grid item xs={12}>
                     <FormControl sx={{ mb: 3, width: "100%" }}>
-                      <ImageInput />
+                      <ImageInput onChange={onImageChange} objectURL={previewUrl} name="image" value={image} />
                     </FormControl>
                   </Grid>
 

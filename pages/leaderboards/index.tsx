@@ -7,17 +7,15 @@ import FilterBar from "@/features/FilterBar/FilterBar";
 
 const Leaderboards = () => {
   const [userData, setUserData] = useState([]);
-  const { data, statuses } = useDataSource({
-    url: `/api/closed`,
+  const { data, statuses, setRefreshUrl } = useDataSource({
+    url: `/api/closed?closedDate=LAST_N_YEARS:5`,
     errorMsg:
       "Problem retrieving leaderboards. If the problem presists, please contact support for further assistance.",
     successNoResultMsg:
-      "Leaderboards haven't been configured yet, please contact support for further assistance.",
+      "No data found for this time frame!",
   });
 
   useEffect(() => {
-    if (data.length === 0) return;
-    console.log(data)
     let userData = data.reduce((initial, curr) => {
       initial[curr.name] = initial[curr.name] + curr.amount || curr.amount;
       return initial;
@@ -38,6 +36,11 @@ const Leaderboards = () => {
     return "$" + amt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
+  const updateData = (range) => {
+    console.log(range)
+    setRefreshUrl(`/api/closed?closedDate=${range}`,)
+  }
+
   return (
     <Dashboard {...statuses}>
       <Grid
@@ -46,7 +49,7 @@ const Leaderboards = () => {
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
         sx={{ padding: "32px", background: "background.page" }}
       >
-        <FilterBar />
+        <FilterBar updateData={updateData} />
         {userData.map((user, index) => (
           <LineItem name={user.name} amount={formatAmount(user.amount)} key={index} />
         ))}

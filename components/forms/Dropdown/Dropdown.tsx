@@ -6,6 +6,7 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 interface Props {
   label: string;
   options: [{ label: string; value: string | number }];
+  value: string | number;
 }
 
 const Dropdown = ({ label, options, onChange, value }: Props) => {
