@@ -33,8 +33,8 @@ export const sections = {
     //   { title: "Market Place", icon: "ShoppingCart" }
     // ],
     Events: [
-      { title: "Upcoming Events", icon: "AccountCircle" },
-      { title: "Calender", icon: "DateRange" },
+      { title: "Upcoming Events", icon: "AccountCircle", href: '/events' },
+      // { title: "Calender", icon: "DateRange" },
     ],
     Help: [
       { title: "Support", icon: "Drafts", href: '/support' },
