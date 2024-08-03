@@ -2,6 +2,7 @@ import { useState } from "react";
 import dynamic from "next/dynamic";
 import { Card, Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import { ApexOptions } from "apexcharts";
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
@@ -11,8 +12,6 @@ const ChartCard = ({ data }) => {
       chart: {
         id: "spark4",
         group: "sparks",
-        type: "line",
-        height: 80,
         sparkline: {
           enabled: true,
         },
@@ -25,9 +24,9 @@ const ChartCard = ({ data }) => {
         },
       },
 
-      stroke: {
-        curve: "smooth",
-      },
+      // stroke: {
+      //   curve: "smooth",
+      // },
       markers: {
         size: 0,
       },
@@ -66,7 +65,7 @@ const ChartCard = ({ data }) => {
   });
   return typeof window !== "undefined" && (
     <Chart
-      {...options.options}
+      options={options.options}
       series={options.series}
       type="line"
       width="100%"

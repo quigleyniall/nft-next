@@ -89,7 +89,7 @@ const LineChart = () => {
   return (
     typeof window !== "undefined" && (
       <Chart
-      {...options.options}
+      options={options.options}
         series={options.series}
         type="line"
         width="100%"

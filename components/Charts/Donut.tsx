@@ -35,7 +35,7 @@ const Donut = () => {
   return (
     typeof window !== "undefined" && (
       <Chart
-      {...options.options}
+      options={options.options}
         series={options.series}
         type="donut"
         width="100%"

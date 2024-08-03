@@ -11,8 +11,6 @@ const LineCard = ({ title, subtitle, data }) => {
       chart: {
         id: "spark4",
         group: "sparks",
-        type: "line",
-        height: 80,
         sparkline: {
           enabled: true,
         },
@@ -25,9 +23,9 @@ const LineCard = ({ title, subtitle, data }) => {
         },
       },
 
-      stroke: {
-        curve: "smooth",
-      },
+      // stroke: {
+      //   curve: "smooth",
+      // },
       markers: {
         size: 0,
       },
@@ -87,7 +85,7 @@ const LineCard = ({ title, subtitle, data }) => {
         </Box>
         {typeof window !== "undefined" && (
           <Chart
-          {...options.options}
+          options={options.options}
             series={options.series}
             type="line"
             width="100%"
