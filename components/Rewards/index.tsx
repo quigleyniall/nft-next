@@ -4,6 +4,8 @@ interface Props {
     title: string;
     desc: string;
     button: string;
+    id?: number | string;
+    onDelete?: any
 }
 
 const Reward = ({id, title, desc, button = "View More", onDelete}: Props) => (

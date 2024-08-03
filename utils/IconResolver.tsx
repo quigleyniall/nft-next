@@ -52,7 +52,7 @@ const ICON_HASH = {
 };
 
 
-export const IconResolver = ({ name = null, ...rest }) => {
+export const IconResolver = ({ name = null, ...rest } : {name: any, style?: any}) => {
     if (typeof name != 'string') return null;
     const icon = ICON_HASH[name.toLowerCase()];
     return icon ? createElement(icon, rest) : null

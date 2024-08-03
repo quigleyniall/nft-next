@@ -66,7 +66,7 @@ const ChartCard = ({ data }) => {
   });
   return typeof window !== "undefined" && (
     <Chart
-      options={options.options}
+      {...options.options}
       series={options.series}
       type="line"
       width="100%"

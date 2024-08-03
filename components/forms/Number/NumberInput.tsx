@@ -3,10 +3,10 @@ import { TextField, TextFieldVariants } from "@mui/material";
 
 interface Props {
   label: string;
-  name: string;
+  name?: string;
   variant?: TextFieldVariants | undefined;
-  value: string;
-  onChange: (e) => void;
+  value: string | number;
+  onChange?: (e) => void;
 }
 
 const NumberInput = ({

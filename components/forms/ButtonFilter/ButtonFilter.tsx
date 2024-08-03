@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ToggleButton, ToggleButtonGroup } from "@mui/material";
 
-const ButtonFilter = ({ options, value, defaultValue, onChange }) => {
+const ButtonFilter = ({ options, value, defaultValue = null, onChange }) => {
   return (
     <ToggleButtonGroup
       color="primary"

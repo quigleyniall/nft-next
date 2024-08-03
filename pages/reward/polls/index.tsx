@@ -26,7 +26,7 @@ const PollCreate = () => {
   }, [data]);
 
   return (
-    <Dashboard {...statuses}>
+    <Dashboard>
       <Grid
         rowSpacing={3}
         item
@@ -44,8 +44,8 @@ const PollCreate = () => {
             <Box
               sx={{ display: "flex", flex: 1, gap: "32px", marginTop: "32px" }}
             >
-              {options.map(({ name, value }) => (
-                <Button variant="outlined" sx={{ flex: 1 }}>
+              {options.map(({ name, value }, index) => (
+                <Button key={index} variant="outlined" sx={{ flex: 1 }}>
                   {value}
                 </Button>
               ))}

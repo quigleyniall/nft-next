@@ -25,7 +25,7 @@ const PollManage = () => {
   }, [data]);
 
   const deletePolls = async (id) => {
-    const { data } = await axios.delete("/api/poll", { id });
+    const { data } = await axios.delete("/api/poll", { data: {id} });
     console.log(data);
     console.log(polls)
     if (data.success) {
@@ -50,7 +50,7 @@ const PollManage = () => {
             sx={{ padding: "32px", marginBottom: "24px" }}
           >
             <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: 'center' }}>
-              <H4>Poll - {question}</H4>
+              {/* <H4>Poll - {question}</H4> */}
               <Button variant="contained" onClick={deletePolls}>Delete</Button>
             </Box>
           </Card>

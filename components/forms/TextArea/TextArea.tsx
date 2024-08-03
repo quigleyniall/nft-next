@@ -7,6 +7,7 @@ interface Props {
     placeholder: string;
     minRows?: number;
     onChange: (e) => void;
+    value?: string
 }
 
 const TextArea = ({ minRows = 3, name, placeholder = 'Description', onChange, value = ''}: Props) => {

@@ -3,10 +3,11 @@ import { Box, Button, TextFieldVariants } from "@mui/material";
 import styles from "./ImageInput.module.scss";
 
 interface Props {
-  label: string;
-  name: string;
+  label?: string;
+  name?: string;
   objectURL: string | undefined;
-  onChange: () => void;
+  onChange: (e) => void;
+  value: any
 }
 
 const fallbackImg =

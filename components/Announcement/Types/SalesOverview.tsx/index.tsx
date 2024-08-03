@@ -15,7 +15,7 @@ const colorIndex = [
     "#22a176", "rgba(17, 185, 129, .8)", "rgba(17, 185, 129, .5)"
 ];
 
-const Label = ({ label, value, index }) => (
+const Label = ({ label, value, index } : {label: string, value: any, index: any}) => (
   <Box>
     <Box sx={{ display: "flex", gap: "8px", alignItems: "center", marginBottom: '0.375rem' }}>
       <Box

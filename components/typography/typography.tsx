@@ -26,7 +26,7 @@ export const H4 = ({ children, center, sx = {} }: H1Props) => (
   </Typography>
 );
 
-export const CardTitle = ({ children, center, sx = {} }) => (
+export const CardTitle = ({ children, center, sx = {} }: H1Props) => (
   <Typography
     variant="h3"
     classes={{ root: `${styles.h3} ${center ? styles.center : ""}` }}
@@ -36,7 +36,7 @@ export const CardTitle = ({ children, center, sx = {} }) => (
   </Typography>
 );
 
-export const ErrorMsg = ({ children, center = false }) => (
+export const ErrorMsg = ({ children, center = false }: H1Props) => (
   <Typography
   variant="h6"
   

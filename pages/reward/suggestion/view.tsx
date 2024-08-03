@@ -30,7 +30,7 @@ const ViewSuggestions = () => {
 
   const deleteSuggestion = async (id) => {
     console.log(id);
-    const { data } = await axios.delete("/api/suggestion", { id });
+    const { data } = await axios.delete("/api/suggestion", { data: {id} });
     if (data.success) {
       // setSuggestions(suggestions.filter((suggestion) => suggestion.id != id));
       forceRefresh();

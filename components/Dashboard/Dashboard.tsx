@@ -12,7 +12,18 @@ import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import { Snackbar } from "@/context/snackbar";
 import { Dna } from "react-loader-spinner";
 
-const Dashboard = ({ children, pending = false, error = false, success = false }) => {
+interface Props {
+  children: any
+  
+  // pending?: {status?: string, msg?: string} | boolean
+  pending?: any
+  // error?: {status?: string, msg?: string} | boolean
+  error?: any
+  // success?: {status?: string, msg?: string} | boolean
+  success?: any
+}
+
+const Dashboard = ({ children, pending = false, error = false, success = false }: Props) => {
   const { theme } = useContext(CustomTheme);
   const { messageList } = useContext(Snackbar);
 
@@ -75,7 +86,7 @@ const Dashboard = ({ children, pending = false, error = false, success = false }
               />
             </Box>
           )}
-            {error?.status && (
+            {typeof error != 'boolean' && error?.status && (
           <Card sx={{margin: '32px', padding: '12px', display: 'flex', alignItems: 'center', gap: '16px'}}>
              <ErrorOutlineIcon
             sx={{ fontSize: "4rem", color: "red" }}
@@ -83,7 +94,7 @@ const Dashboard = ({ children, pending = false, error = false, success = false }
             <ErrorMsg>{error.msg}</ErrorMsg>
           </Card>
         )}
-        {success?.status && success.msg && (
+        {typeof success != 'boolean' && success?.status && success.msg && (
            <Card sx={{margin: '32px', padding: '12px', display: 'flex', alignItems: 'center', gap: '16px'}}>
            <ErrorOutlineIcon
           sx={{ fontSize: "4rem", color: "grey" }}

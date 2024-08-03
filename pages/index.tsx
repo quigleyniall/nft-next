@@ -17,7 +17,7 @@ const Home = () => {
         padding: "32px",
       }}
     >
-      <Grid item md={6} lg={4}>
+      {/* <Grid item md={6} lg={4}>
         <TopSeller />
       </Grid>
       <Grid item md={6} lg={4}>
@@ -28,7 +28,7 @@ const Home = () => {
       </Grid>
       <Grid item md={12}>
         <SalesOverview />
-      </Grid>
+      </Grid> */}
     </Grid>
     </Dashboard>
   );

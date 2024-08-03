@@ -7,6 +7,7 @@ interface Props {
     variant?: TextFieldVariants | undefined;
     value: string;
     onChange: (e) => void;
+    email?: boolean
 }
 
 const TextInput = ({label, variant = 'outlined', onChange, name, value} : Props) => {

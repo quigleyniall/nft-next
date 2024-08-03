@@ -96,7 +96,7 @@ const PollCreate = () => {
                     Solutions
                   </Typography>
                   {options.map((option, index) => (
-                    <FormControl sx={{ mb: 2, width: "100%" }}>
+                    <FormControl key={index} sx={{ mb: 2, width: "100%" }}>
                       <TextInput
                         {...option}
                         onChange={(e) => onOptionChange(e.target.value, index)}

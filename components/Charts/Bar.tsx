@@ -107,7 +107,7 @@ const BarChart = ({startText = '', endText = '', value = 0, max = 100, minThresh
     return (
         typeof window !== 'undefined' &&
         <Chart
-              options={options.options}
+              {...options.options}
               series={options.series}
               type="bar"
               width="100%"

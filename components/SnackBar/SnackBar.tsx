@@ -51,7 +51,7 @@ const SnackBar = ({ message, type }) => {
           </Box>
 
           <IconButton
-            onClick={onClose}
+            // onClick={onClose}
             sx={{ position: "absolute", top: "4px", right: "8px" }}
           >
             <CloseIcon sx={{ color: "white" }} />

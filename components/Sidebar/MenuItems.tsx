@@ -35,13 +35,13 @@ const style = (active) => ({
 })
 
 const LinkIcon = ({ name, title, open}) => {
-    const icon = (
+    const ListIcon = (
         <ListItemIcon className={classes.icon}>
             <IconResolver name={name} />
         </ListItemIcon>
     );
 
-    return open ? icon : <Tooltip title={title} children={icon}/>
+    return open ? ListIcon : <Tooltip title={title}>{ListIcon}</Tooltip>
 }
 
 const MenuItems = ({ link, open, setOpen }) => {
@@ -90,8 +90,8 @@ const MenuItems = ({ link, open, setOpen }) => {
             </ListItem>
             {!!link.children && <Collapse in={subMenuOpen} timeout="auto" unmountOnExit>
                 <List sx={{ paddingTop: 0, paddingLeft: '18px' }}>
-                    {link.children.map(item => (
-                        <ListItem className={classes.listItem}>
+                    {link.children.map((item, index) => (
+                        <ListItem key={index} className={classes.listItem}>
                             <Link href={item.href} sx={style(item.href === pathname)} className={classes.link}>
                                 <ListItemText
                                     className={classes.linkTextSpacing}

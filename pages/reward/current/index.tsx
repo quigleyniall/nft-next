@@ -37,7 +37,7 @@ const Rewards = () => {
 
   const onDelete = (id) => {
     const removeReward = async () => {
-      const {data} = await axios.delete('/api/rewards', {id});
+      const {data} = await axios.delete('/api/rewards', {data: {id}});
       forceRefresh();
     }
     removeReward();
